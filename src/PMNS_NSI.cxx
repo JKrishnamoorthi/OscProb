@@ -234,12 +234,20 @@ void PMNS_NSI::UpdateHam()
   kr2GNnsi *= GetZoACoup(); // NSI matter potential in eV
 
   // Finish build Hamiltonian in matter with dimension of eV
+  // for (int i = 0; i < fNumNus; i++) { Removed by JK
+  //   for (int j = i; j < fNumNus; j++) {
+  //     if (!fIsNuBar)
+  //       fHam[i][j] = fHms[i][j] / lv + kr2GNnsi * fEps[i][j];
+  //     else
+  //       fHam[i][j] = conj(fHms[i][j] / lv - kr2GNnsi * fEps[i][j]);
+  //   }
+  // }
   for (int i = 0; i < fNumNus; i++) {
     for (int j = i; j < fNumNus; j++) {
       if (!fIsNuBar)
-        fHam[i][j] = fHms[i][j] / lv + kr2GNnsi * fEps[i][j];
+        fHam[i][j] = fHms[i][j] / lv + fEps[i][j];
       else
-        fHam[i][j] = conj(fHms[i][j] / lv - kr2GNnsi * fEps[i][j]);
+        fHam[i][j] = conj(fHms[i][j] / lv - fEps[i][j]);
     }
   }
 
