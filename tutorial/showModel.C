@@ -16,9 +16,10 @@ void showModel(){
   // Set a nice overall style
   SetNiceStyle();
 
-  // Draw two different models (15 and 44 layers)
+  // Draw two different models (15 and 44 and 12 layers)
   DrawModel("alp", kBlue, 0);
-  DrawModel("lp" , kRed, 1);
+  DrawModel("alp" , kRed, 1);
+  DrawModel("ALP", kBlue, 12);
 
   SetTH1Margin();
 
@@ -34,6 +35,7 @@ void DrawModel(TString opt, int col, int model){
   string filename;
 
   if(model==0) filename = PREM_DIR + "/prem_44layers.txt";
+  else if(model==12) filename = PREM_DIR +"/prem_12layers.txt";
   else         filename = PREM_DIR + "/prem_15layers.txt";
 
   // Set the PREM model from a table
